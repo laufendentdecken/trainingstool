@@ -9,6 +9,15 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<spark.version>2.5.4</spark.version>
+		<spark.freemarker.version>2.3</spark.freemarker.version>
+		<freemarker.version>2.3.25-incubating</freemarker.version>
+		<spring.version>4.3.5.RELEASE</spring.version>
+		<hsqldb.version>2.3.4</hsqldb.version>
+		<dbcp.version>2.1.1</dbcp.version>
+		<jbcrypt.version>0.4.1</jbcrypt.version>
+		<commons.beanutils.version>1.9.3</commons.beanutils.version>
+		<slf4j.version>1.7.22</slf4j.version>
 	</properties>
 
 	<dependencies>
@@ -24,6 +33,83 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.25</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.18</version>
+		</dependency>
+		
+		<!-- Spark Freemarker -->
+	    <dependency>
+	        <groupId>com.sparkjava</groupId>
+	        <artifactId>spark-template-freemarker</artifactId>
+	        <version>${spark.freemarker.version}</version>
+	    </dependency>
+	    
+	    <!-- Freemarker -->
+	    <dependency>
+	        <groupId>org.freemarker</groupId>
+	        <artifactId>freemarker</artifactId>
+	        <version>${freemarker.version}</version>
+	    </dependency>
+    
+    	<!-- Spring Core -->
+	    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	
+		<!-- Spring Context -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	
+		<!-- Spring JDBC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	
+		<!-- HyperSQL DB -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+		</dependency>
+	
+		<!--  Connection pool -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${dbcp.version}</version>
+		</dependency>
+		
+		<!-- Password hashes -->
+		<dependency>
+			<groupId>de.svenkubiak</groupId>
+			<artifactId>jBCrypt</artifactId>
+			<version>${jbcrypt.version}</version>
+		</dependency>
+		
+		<!-- Populate bean from request -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons.beanutils.version}</version>
+		</dependency>
+		
+		<!-- To enable logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -38,7 +124,8 @@
 					<processTypes>
 						<!-- Tell Heroku how to launch your application -->
 						<!-- You might have to remove the ./ in front -->
-						<web>java -jar target/tt-webapp-1.0.0-SNAPSHOT-jar-with-dependencies.jar</web>
+						<web>java -jar
+							target/tt-webapp-1.0.0-SNAPSHOT-jar-with-dependencies.jar</web>
 					</processTypes>
 				</configuration>
 			</plugin>

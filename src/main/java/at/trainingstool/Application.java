@@ -1,20 +1,24 @@
 package at.trainingstool;
 
-import static spark.Spark.get;
 import static spark.Spark.port;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import at.trainingstool.config.WebConfig;
+import at.trainingstool.controller.LoginController;
+import at.trainingstool.utils.HerokuUtils;
+
+@Configuration
+@ComponentScan({ "at.trainingstool" })
 public class Application {
 
   public static void main(String[] args) {
-    port(getHerokuAssignedPort());
-    get("/hello", (req, res) -> "Hello World!");
+    port(HerokuUtils.getHerokuAssignedPort());
+    AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application.class);
+    new WebConfig(ctx.getBean(LoginController.class));
+    ctx.registerShutdownHook();
   }
 
-  static int getHerokuAssignedPort() {
-    ProcessBuilder processBuilder = new ProcessBuilder();
-    if (processBuilder.environment().get("PORT") != null) {
-      return Integer.parseInt(processBuilder.environment().get("PORT"));
-    }
-    return 4567; // return default port if heroku-port isn't set (i.e. on localhost)
-  }
 }
