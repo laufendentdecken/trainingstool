@@ -41,5 +41,6 @@
         </center>
     </div>
 </div>
+<img src="/img/login.png" class="login-picture"/>
 </body>
 </html>

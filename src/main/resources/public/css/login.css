@@ -1,9 +1,6 @@
 body{
-    background:url("/img/login.png");
+    background:url("/img/background.png");
     background-size: cover;
-    background-repeat: no-repeat;
-    padding:50px;
-    background-color: #FF6A07;
 }
 
 #login-dp{
@@ -15,6 +12,12 @@ body{
 #login-dp .help-block{
     font-size:12px    
 }
+
+.login-picture {
+	width:100%; 
+	margin-top:12%
+}
+
 #login-dp .bottom{
     background-color:rgba(255,255,255,.8);
     border-top:1px solid #ddd;
@@ -54,5 +57,10 @@ body{
     #login-dp .bottom{
         background-color: inherit;
         border-top:0 none;
+    }
+    
+    .login-picture {
+    	width:100%; 
+    	margin-top:22%
     }
 }
