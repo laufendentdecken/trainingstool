@@ -1,7 +1,9 @@
 body{
     background:url("/img/login.png");
     background-size: cover;
+    background-repeat: no-repeat;
     padding:50px;
+    background-color: #FF6A07;
 }
 
 #login-dp{
