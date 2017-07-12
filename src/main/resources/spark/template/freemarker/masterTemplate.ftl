@@ -9,6 +9,7 @@
     <title>${title} | TrainingTool</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/calendar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js" ></script>
 </head>
@@ -45,9 +46,7 @@
     </div>
 </div>
 
-<div class="container">
-    <#nested />
-</div>
+<#nested />
 
 </body>
 </html>
