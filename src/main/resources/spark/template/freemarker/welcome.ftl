@@ -12,6 +12,7 @@
     	</div>
     </#if>
 
-    <h3>Willkommen</h3>
+
+    <center><h2>Willkommen</h2></center>
 
     </@layout.masterTemplate>

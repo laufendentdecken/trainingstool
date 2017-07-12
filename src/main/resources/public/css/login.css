@@ -1,4 +1,5 @@
 body{
+    background:url("/img/login.png");
     background-size: cover;
     padding:50px;
 }

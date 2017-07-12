@@ -11,37 +11,42 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-default" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle"
-                    data-toggle="collapse" data-target="#example-navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
-            <a class="navbar-brand" href="/">Trainingstool</a>
+            <a class="navbar-brand" href="#">Trainingstool</a>
         </div>
-
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <#if user??>
+        <center>
+            <div class="navbar-collapse collapse" id="navbar-main">
+            	<#if user??>
+                <ul class="nav navbar-nav">
                     <li><a href="/logout">Logout [${user.username}]</a></li>
+                </ul>
+                <#else>
+                <form class="navbar-form navbar-right" role="search" action="/login" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-default">Login</button>
+                </form>
                 </#if>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
-        <#nested />
+            </div>
+        </center>
     </div>
+</div>
 
-    <footer class="footer">
-        <p>Trainingstool &mdash; A Spark Application</p>
-    </footer>
-</div><!-- /container -->
+<div class="container">
+    <#nested />
+</div>
+
 </body>
 </html>
 </#macro>

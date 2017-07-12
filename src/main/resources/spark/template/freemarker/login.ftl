@@ -1,38 +1,45 @@
-<#import "masterTemplate.ftl" as layout />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<@layout.masterTemplate title="Sign In">
-    <#if message??>
-    	<div class="alert alert-success">
-    		${message}
-    	</div>
-    </#if>
-    <#if error??>
-    	<div class="alert alert-danger">
-    		<strong>Error:</strong> ${error}
-    	</div>
-    </#if>
-
-    <h3>Login</h3>
-
-    <form class="form-horizontal" action="/login" role="form" method="post">
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="username" id="username" placeholder="Benutzername" value="${username!}" />
-            </div>
+    <title>Login | TrainingTool</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Trainingstool</a>
         </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <input type="password" class="form-control" name="password" placeholder="Passwort">
+        <center>
+            <div class="navbar-collapse collapse" id="navbar-main">
+            	<#if user??>
+                <ul class="nav navbar-nav">
+                    <li><a href="/logout">Logout [${user.username}]</a></li>
+                </ul>
+                <#else>
+                <form class="navbar-form navbar-right" role="search" action="/login" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-default">Login</button>
+                </form>
+                </#if>
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-default">Login</button>
-            </div>
-        </div>
-
-	 </form>
-</@layout.masterTemplate>
+        </center>
+    </div>
+</div>
+</body>
+</html>
