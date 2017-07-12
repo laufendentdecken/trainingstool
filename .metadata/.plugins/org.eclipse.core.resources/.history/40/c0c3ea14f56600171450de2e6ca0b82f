@@ -1,0 +1,8 @@
+package at.testtool;
+
+public class Application {
+
+	public static void main(String[] args) {
+
+	}
+}
