@@ -4,6 +4,8 @@ import static spark.Spark.exception;
 import static spark.Spark.port;
 import static spark.Spark.staticFileLocation;
 
+import java.util.Locale;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,8 @@ import at.trainingstool.utils.HerokuUtils;
 public class Application {
 
   public static void main(String[] args) {
+    Locale.setDefault(Locale.GERMANY);
+
     port(HerokuUtils.getHerokuAssignedPort());
     staticFileLocation("/public");
 
