@@ -45,15 +45,16 @@ public abstract class AbstractPeriod {
       period.add(new Week(weekdays));
     }
 
-    Date from = period.get(0).getWeekdays().get(0).getDate();
-    Date to = period.get(period.size() - 1).getWeekdays().get(6).getDate();
-    AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application.class);
-    TrainingDao trainingsDAO = ctx.getBean(TrainingDao.class);
+    if (period.size() > 0 && period.get(0).getWeekdays().size() > 0) {
+      Date from = period.get(0).getWeekdays().get(0).getDate();
+      Date to = period.get(period.size() - 1).getWeekdays().get(6).getDate();
+      AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application.class);
+      TrainingDao trainingsDAO = ctx.getBean(TrainingDao.class);
 
-    List<Training> trainings = trainingsDAO.getTrainings(user, from, to);
+      List<Training> trainings = trainingsDAO.getTrainings(user, from, to);
 
-    period = addTrainings(period, trainings);
-
+      period = addTrainings(period, trainings);
+    }
     return period;
   }
 
