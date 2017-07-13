@@ -30,7 +30,7 @@ public class UserDao {
     List<User> list = template.query("SELECT * FROM user WHERE username=:name", params, (rs, rowNum) -> {
       User u = new User();
 
-      u.setId(rs.getInt("user_id"));
+      u.setId(rs.getInt("id"));
       u.setEmail(rs.getString("email"));
       u.setUsername(rs.getString("username"));
       u.setPassword(rs.getString("pw"));

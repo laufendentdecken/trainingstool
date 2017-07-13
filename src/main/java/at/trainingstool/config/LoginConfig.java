@@ -4,23 +4,20 @@ import static spark.Spark.before;
 import static spark.Spark.get;
 import static spark.Spark.halt;
 import static spark.Spark.post;
-import static spark.Spark.staticFileLocation;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import at.trainingstool.controller.LoginController;
 import at.trainingstool.utils.AuthentificationUtils;
 import spark.ModelAndView;
 import spark.template.freemarker.FreeMarkerEngine;
 
-public class WebConfig {
+public class LoginConfig {
 
   private LoginController loginController;
 
-  public WebConfig(LoginController loginController) {
+  public LoginConfig(LoginController loginController) {
     this.loginController = loginController;
-    staticFileLocation("/public");
     setupRoutes();
   }
 
@@ -31,12 +28,6 @@ public class WebConfig {
       res.redirect("/login");
       halt();
     });
-
-    get("/app/welcome", (req, res) -> {
-      Map<String, Object> map = new HashMap<>();
-      map.put("user", AuthentificationUtils.getAuthenticatedUser(req));
-      return new ModelAndView(map, "welcome.ftl");
-    }, new FreeMarkerEngine());
 
     // Routes
     get("/login", (req, res) -> {
