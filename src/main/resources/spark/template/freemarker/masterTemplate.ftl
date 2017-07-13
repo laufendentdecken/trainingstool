@@ -1,4 +1,4 @@
-<#macro masterTemplate title="Welcome">
+<#macro masterTemplate title="Welcome" header="">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/css/calendar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js" ></script>
+    ${header}
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
@@ -28,6 +29,7 @@
             <div class="navbar-collapse collapse" id="navbar-main">
             	<#if user??>
                 <ul class="nav navbar-nav">
+                	<li><a href="/app/upload">Aktivität hochladen</a></li>
                     <li><a href="/logout">Logout [${user.username}]</a></li>
                 </ul>
                 <#else>
